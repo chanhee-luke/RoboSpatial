@@ -94,6 +94,10 @@ import robot_exp from "../assets/robot_exp.png";
     },
   ]}
   />
+<div className="center-text">
+  **TL;DR** A large-scale 2D/3D dataset of real indoor environments for spatial reasoning in robotics.
+</div>
+
 
 {/* <Video source={outside} /> */}
 
@@ -101,7 +105,7 @@ import robot_exp from "../assets/robot_exp.png";
 
 ## Overview
 
-**TL;DR** 1) A new training dataset and benchmark, **RoboSpatial** and **RoboSpatial-Home**, comprising images and 3D scans paired with spatial questions and answers, designed for robotics. 2) **RoboSpatial** trained model outperforms prior SOTA VLMs on natural language-specified robot manipulation tasks and indoor spatial scene question answering.
+{/* **TL;DR** 1) A new training dataset and benchmark, **RoboSpatial** and **RoboSpatial-Home**, comprising images and 3D scans paired with spatial questions and answers, designed for robotics. 2) **RoboSpatial** trained model outperforms prior SOTA VLMs on natural language-specified robot manipulation tasks and indoor spatial scene question answering. */}
 
 Spatial understanding is essential for robots to perceive, reason about, and interact with their environments. However, current visual language models often rely on general-purpose image datasets that lack robust spatial scene understanding and reference frame comprehension (ego-, object-, or world-centric). To address this gap, we introduce **RoboSpatial**, a large-scale dataset of **real indoor and tabletop environments** captured via egocentric images and 3D scans. RoboSpatial provides **1M images, 5K 3D scans, and 3M annotated spatial relationships**, enabling both 2D and 3D spatial reasoning. Models trained on RoboSpatial outperform baselines on tasks including spatial affordance prediction, spatial relationship prediction, and robotics manipulation.
 
@@ -109,11 +113,13 @@ Spatial understanding is essential for robots to perceive, reason about, and int
 
 ## RoboSpatial Application Example
 
+
 <Figure
     caption="An illustration of a model trained on RoboSpatial being used to solve a manipulation task using spatial reasoning."
   >
     <Image source={fig1} altText="An illustration of a model trained on RoboSpatial being used to solve a manipulation task using spatial reasoning." />
 </Figure>
+
 
 {/* ## Two columns
 
@@ -128,10 +134,10 @@ Use the two columns component to display two columns of content. In this example
   </Figure>
 </TwoColumns> */}
 
-## Overview
+## Approach
 
 <Figure
-    caption="We automatically generate spatial relationship annotations from existing datasets with 3D point clouds, egocentric images, and 3D bounding box annotations. We create question/answer pairs covering three classes of spatial relationships, three spatial reference frames, and both binary (yes/no) and numeric (e.g. 2D image points) answers. From 1M images and 1.4K scans, we generate over 3M spatial question/answer pairs."
+    caption="We automatically generate spatial relationship annotations from existing datasets with 3D point clouds, egocentric images, and 3D bounding box annotations. We create question/answer pairs covering three classes of spatial relationships, three spatial reference frames, and both binary (yes/no) and numeric (e.g. 2D image points) answers. From 1M images and 5K scans, we generate over 3M spatial question/answer pairs."
   >
     <Image source={fig2} altText="An overview of RoboSpatial Dataset." />
 </Figure>
