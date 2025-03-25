@@ -23,10 +23,10 @@ import Table from "../components/Table.astro";
 export const components = {pre: CodeBlock, table: Table}
 
 {/* Image imports */}
-import fig1 from "../assets/fig1_new.png";
-import fig2 from "../assets/fig2.png";
-import fig3 from "../assets/fig3.png";
-import robot_exp from "../assets/robot_exp.png";
+import fig1 from "../assets/figure1.png";
+import fig2 from "../assets/figure2.png";
+import fig3 from "../assets/figure3.png";
+import robot_exp from "../assets/figure_robot.png";
 
 
 
@@ -71,7 +71,7 @@ import robot_exp from "../assets/robot_exp.png";
   notes={[
     {
       symbol: "*",
-      text: "Work done during Nvidia internship",
+      text: "Work partly done during Nvidia internship",
     },
   ]}
   links={[
@@ -96,7 +96,7 @@ import robot_exp from "../assets/robot_exp.png";
   />
 
 <div className="center-text">
-  **TL;DR** A large-scale 2D/3D dataset of real indoor environments for spatial reasoning in robotics.
+  **TL;DR** A large-scale 2D/3D dataset of real indoor/tabletop environments for spatial reasoning in robotics.
 </div>
 
 
@@ -108,7 +108,7 @@ import robot_exp from "../assets/robot_exp.png";
 
 {/* **TL;DR** 1) A new training dataset and benchmark, **RoboSpatial** and **RoboSpatial-Home**, comprising images and 3D scans paired with spatial questions and answers, designed for robotics. 2) **RoboSpatial** trained model outperforms prior SOTA VLMs on natural language-specified robot manipulation tasks and indoor spatial scene question answering. */}
 
-Spatial understanding is essential for robots to perceive, reason about, and interact with their environments. However, current visual language models often rely on general-purpose image datasets that lack robust spatial scene understanding and reference frame comprehension (ego-, object-, or world-centric). To address this gap, we introduce **RoboSpatial**, a large-scale dataset of **real indoor and tabletop environments** captured via egocentric images and 3D scans. RoboSpatial provides **1M images, 5K 3D scans, and 3M annotated spatial relationships**, enabling both 2D and 3D spatial reasoning. Models trained on RoboSpatial outperform baselines on tasks including spatial affordance prediction, spatial relationship prediction, and robotics manipulation.
+Spatial understanding is essential for robots to perceive, reason about, and interact with their environments. However, current visual language models often rely on general-purpose image datasets that lack robust spatial scene understanding and reference frame comprehension (ego-, world-, or object-centric). To address this gap, we introduce **RoboSpatial**, a large-scale dataset of **real indoor and tabletop environments** captured via egocentric images and 3D scans. RoboSpatial provides **1M images, 5k 3D scans, and 3M annotated spatial relationships**, enabling both 2D and 3D spatial reasoning. Models trained on RoboSpatial outperform baselines on tasks including spatial affordance prediction, spatial relationship prediction, and robotics manipulation.
 
 </HighlightedSection>
 
@@ -131,7 +131,7 @@ Use the two columns component to display two columns of content. In this example
 ## Approach
 
 <Figure
-    caption="We automatically generate spatial relationship annotations from existing datasets with 3D point clouds, egocentric images, and 3D bounding box annotations. We create question/answer pairs covering three classes of spatial relationships, three spatial reference frames, and both binary (yes/no) and numeric (e.g. 2D image points) answers. From 1M images and 5K scans, we generate over 3M spatial question/answer pairs."
+    caption="We automatically generate spatial relationship annotations from existing datasets with 3D point clouds, egocentric images, and 3D bounding box annotations. We create question/answer pairs covering three classes of spatial relationships, three spatial reference frames, and both binary (yes/no) and numeric (e.g. 2D image points) answers. From 1M images and 5k 3D scans, we generate over 3M spatial question/answer pairs."
   >
     <Image source={fig2} altText="An overview of RoboSpatial Dataset." />
 </Figure>
@@ -152,32 +152,33 @@ Use the two columns component to display two columns of content. In this example
 ### Spatial QA
 
 <Figure
-    caption="Results of RoboSpatial-trained models on RoboSpatial test set, RoboSpatial-Home and BLINK. Two models are shown: SL (SpaceLLaVA) and RP (RoboPoint), where the S- prefix and FT indicates RoboSpatial-trained models. For Yes/No questions, the green checkmark indicates the correct answer. For spatial context questions, GT indicates the correct answer. For in-domain, all questions are from RoboSpatial test. For out-of-domain, all images except for the top right are from RoboSpatial-Home."
+    caption="In-domain (RoboSpatial-Val, top) and out-of-domain (RoboSpatial-Home, BLINK, middle and bottom) results for RoboSpatial-trained models. Two models shown: SL (SpaceLLaVA) and RP (RoboPoint); the -FT suffix indicates fine-tuning on RoboSpatial. Correct answers in green. All images except bottom-right in the out-of-domain rows are from RoboSpatial-Home."
   >
     <Image source={fig3} altText="Qualitative Results of RoboSpatial-trained models." />
 </Figure>
 
-<Table caption="Performance of RoboSpatial-trained models on three spatial reasoning benchmarks.">
-| Model                       | RoboSpatial Test | RoboSpatial-Home | BLINK-Spatial |
-|:----------------------------|:---------------:|:---------------:|:---------------:|
-| **Open-source**             |                |                 |                 |
-| *--2D--*             |                |                 |                 |
-| LLaVA-NeXT                  | 30.3           |23.7           |71.8           |
-| + RoboSpatial               | 60.5    |  42.0               |    **79.0**             |
-| RoboPoint                  | 38.9           |40.2           |  63.6           |
-| + RoboSpatial               | 70.6    |  50.7               |    70.6             |
-| *--3D--*             |                |                 |                 |
-| Embodied Generalist        |     42.8     |       36.2          |     N/A            |
-| + RoboSpatial               | **71.9**    |      **54.7**       |    N/A             |
-| **Baselines**               |            |                 |                 |
-| Molmo                     | 50.1           |   46.9        |   67.1          |
-| GPT-4o                   | 50.8           |   48.6        |    76.2         |
+<Table caption="Performance of RoboSpatial-trained models on four spatial reasoning benchmarks.">
+| Model                       | RoboSpatial-Val | RoboSpatial-Home | BLINK-Spatial | SpatialBench-Position |
+|:----------------------------|:---------------:|:-----------------:|:-------------:|:------------:|
+| **Open-source**             |                 |                  |               |              |
+| *--2D--*                    |                 |                  |               |              |
+| LLaVA-NeXT                  | 30.3            | 43.9             | 71.8          |    55.9      |
+| + RoboSpatial               | 60.5            | 58.7             | **79.0**      |    **70.6**      |
+| RoboPoint                   | 38.9            | 47.3             | 63.6          |    44.1      |
+| + RoboSpatial               | 70.6            | **60.0**         | 70.6          |    64.7      |
+| *--3D--*                    |                 |                  |               |              |
+| Embodied Generalist         | 42.8            | 29.8             | N/A           |    N/A       |
+| + RoboSpatial               | **71.9**        | 43.8             | N/A           |    N/A       |
+| **Baselines**               |                 |                  |               |              |
+| Molmo                       | 50.1            | 24.5             | 67.1          |    55.9      |
+| GPT-4o                      | 50.8            | 45.3             | 76.2          |    **70.6**      |
+
 </Table>
 
-### Robot Manipulation
+### Robotics Manipulation
 
 <Figure
-    caption="Robotics experiments: the red dot shows the model output (if not present, the model failed to provide a valid point in the image);  green dots are used to show when a model outputs multiple points. The robot motion generator, cuRobo, is used to grasp the item referenced by the generated point. The spatial- prefix indicates model trained with RoboSpatial."
+    caption="Robot experiments: the red dot shows the model output (if not present, the model failed to provide a valid point in the image);  green dots are used to show when a model outputs multiple points. The robot motion generator, cuRobo, is used to grasp the item referenced by the generated point. The spatial- prefix indicates model trained with RoboSpatial."
   >
     <Image source={robot_exp} altText="Robot experiment results." />
 </Figure>
