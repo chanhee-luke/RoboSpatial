@@ -108,7 +108,7 @@ import robot_exp from "../assets/figure_robot.png";
 
 {/* **TL;DR** 1) A new training dataset and benchmark, **RoboSpatial** and **RoboSpatial-Home**, comprising images and 3D scans paired with spatial questions and answers, designed for robotics. 2) **RoboSpatial** trained model outperforms prior SOTA VLMs on natural language-specified robot manipulation tasks and indoor spatial scene question answering. */}
 
-Spatial understanding is essential for robots to perceive, reason about, and interact with their environments. However, current visual language models often rely on general-purpose image datasets that lack robust spatial scene understanding and reference frame comprehension (ego-, world-, or object-centric). To address this gap, we introduce **RoboSpatial**, a large-scale dataset of **real indoor and tabletop environments** captured via egocentric images and 3D scans. RoboSpatial provides **1M images, 5k 3D scans, and 3M annotated spatial relationships**, enabling both 2D and 3D spatial reasoning. Models trained on RoboSpatial outperform baselines on tasks including spatial affordance prediction, spatial relationship prediction, and robotics manipulation.
+Spatial understanding is essential for robots to perceive, reason about, and interact with their environments. However, current visual language models often rely on general-purpose image datasets that lack robust spatial scene understanding and reference frame comprehension (ego-, world-, or object-centric). To address this gap, we introduce **RoboSpatial**, a large-scale dataset of **real indoor and tabletop environments** captured via egocentric images and 3D scans. RoboSpatial provides **1M images, 5k 3D scans, and 3M annotated spatial relationships**, enabling both 2D and 3D spatial reasoning. Models trained on RoboSpatial outperform baselines on tasks including spatial affordance prediction, spatial relationship prediction, and robot manipulation.
 
 </HighlightedSection>
 
@@ -175,7 +175,7 @@ Use the two columns component to display two columns of content. In this example
 
 </Table>
 
-### Robotics Manipulation
+### Robot Manipulation
 
 <Figure
     caption="Robot experiments: the red dot shows the model output (if not present, the model failed to provide a valid point in the image);  green dots are used to show when a model outputs multiple points. The robot motion generator, cuRobo, is used to grasp the item referenced by the generated point. The spatial- prefix indicates model trained with RoboSpatial."
