@@ -27,6 +27,7 @@ import fig1 from "../assets/figure1.png";
 import fig2 from "../assets/figure2.png";
 import fig3 from "../assets/figure3.png";
 import robot_exp from "../assets/figure_robot.png";
+import demo_video from "../assets/demo_robospatial.mp4"
 
 
 
@@ -63,7 +64,7 @@ import robot_exp from "../assets/figure_robot.png";
     },
     {
       name: "Stan Birchfield",
-      url: "https://research.nvidia.com/person/stan-birchfield",
+      url: "https://sbirchfield.github.io/",
       institution: "NVIDIA",
     },
   ]}
@@ -81,10 +82,10 @@ import robot_exp from "../assets/figure_robot.png";
       icon: "fa-solid:file-pdf",
     },
     {
-      name: "Code (TBA)",
+      name: "Code",
       url: "https://github.com/NVlabs/RoboSpatial",
       icon: "mdi:github",
-      disabled: true,
+      disabled: false,
     },
     {
       name: "Benchmark",
@@ -98,6 +99,8 @@ import robot_exp from "../assets/figure_robot.png";
 <div className="center-text">
   **TL;DR** A large-scale 2D/3D dataset of real indoor/tabletop environments for spatial reasoning in robotics.
 </div>
+
+<Video source={demo_video} />
 
 
 <HighlightedSection>
